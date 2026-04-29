@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+type Props = {
+	title?: string;
+	description?: string;
+};
+
+const {
+	title = 'José Camacaro — Portfolio',
+	description = 'Full stack developer focused on React, Next.js, and React Native.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+	<body
+		class="relative min-h-screen bg-cyber-bg font-sans text-zinc-200 antialiased selection:bg-cyber-magenta/25 selection:text-cyber-cyan"
+	>
+		<div class="cyber-bg-grid pointer-events-none fixed inset-0 -z-20" aria-hidden="true"></div>
+		<div
+			class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(0,255,157,0.07),transparent)]"
+			aria-hidden="true"
+		>
+		</div>
+		<div class="cyber-scanlines" aria-hidden="true"></div>
+		<div class="relative z-10">
+			<slot />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans: "IBM Plex Sans", system-ui, sans-serif;
+	--font-mono: "Share Tech Mono", ui-monospace, monospace;
+	--font-display: "Orbitron", system-ui, sans-serif;
+
+	--color-cyber-bg: #050508;
+	--color-cyber-surface: #0c0f14;
+	--color-cyber-elevated: #12161f;
+	--color-cyber-green: #00ff9d;
+	--color-cyber-cyan: #00f0ff;
+	--color-cyber-magenta: #ff2bd6;
+	--color-cyber-amber: #ffc400;
+}
+
+body {
+	font-family: var(--font-sans);
+}
+
+/* Terminal-style grid + vignette (behind content) */
+.cyber-bg-grid {
+	background-color: var(--color-cyber-bg);
+	background-image:
+		linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+		radial-gradient(ellipse 100% 80% at 50% -30%, rgba(255, 43, 214, 0.12), transparent 55%),
+		radial-gradient(ellipse 60% 50% at 100% 50%, rgba(0, 240, 255, 0.06), transparent 45%),
+		radial-gradient(ellipse 50% 40% at 0% 80%, rgba(0, 255, 157, 0.05), transparent 50%);
+	background-size:
+		24px 24px,
+		24px 24px,
+		100% 100%,
+		100% 100%,
+		100% 100%;
+}
+
+/* Subtle CRT scanlines */
+.cyber-scanlines {
+	pointer-events: none;
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	opacity: 0.06;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.45) 2px,
+		rgba(0, 0, 0, 0.45) 4px
+	);
+	mix-blend-mode: multiply;
+}
+
+.cyber-glow-green {
+	box-shadow:
+		0 0 0 1px rgba(0, 255, 157, 0.15),
+		0 0 24px rgba(0, 255, 157, 0.08);
+}
+
+.cyber-glow-magenta {
+	box-shadow:
+		0 0 0 1px rgba(255, 43, 214, 0.2),
+		0 0 28px rgba(255, 43, 214, 0.06);
+}
+
+.cyber-text-glow {
+	text-shadow:
+		0 0 24px rgba(0, 255, 157, 0.35),
+		0 0 48px rgba(0, 240, 255, 0.12);
+}
+
+@keyframes cyber-pulse-border {
+	0%,
+	100% {
+		border-color: rgba(0, 255, 157, 0.35);
+		box-shadow: 0 0 18px rgba(0, 255, 157, 0.12);
+	}
+	50% {
+		border-color: rgba(0, 240, 255, 0.45);
+		box-shadow: 0 0 26px rgba(0, 240, 255, 0.18);
+	}
+}
+
+.cyber-header-border {
+	animation: cyber-pulse-border 6s ease-in-out infinite;
+}
