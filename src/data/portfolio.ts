@@ -90,6 +90,25 @@ export type StoreApp = {
 
 export const storeApps: StoreApp[] = [
 	{
+		name: 'Play Clout',
+		tagline: 'Esports fandom platform — pick\'ems, XP, and rewards (iOS, Android & web).',
+		role: 'Senior Frontend at House Edge — React Native mobile, Next.js web, IAP & subscriptions.',
+		links: [
+			{
+				label: 'App Store',
+				href: 'https://apps.apple.com/us/app/play-clout/id1485722011',
+			},
+			{
+				label: 'Google Play',
+				href: 'https://play.google.com/store/apps/details?id=com.threecurveesports.clout&hl=en-US',
+			},
+			{
+				label: 'Web',
+				href: 'https://playclout.gg/',
+			},
+		],
+	},
+	{
 		name: 'Ohana Inversiones',
 		tagline: 'Investment product (iOS & Android).',
 		role: 'Full stack & React Native — micro frontends, NestJS, CI/CD.',
