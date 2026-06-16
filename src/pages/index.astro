@@ -7,6 +7,7 @@ import {
 	storeApps,
 	repoProjects,
 	skillGroups,
+	certifications,
 	education,
 	languages,
 } from '../data/portfolio';
@@ -127,7 +128,73 @@ import {
 						<li class="cyber-glow-green rounded-sm border border-cyber-green/20 bg-cyber-surface/50 p-6 backdrop-blur-sm">
 							<h3 class="font-display text-xl font-semibold tracking-wide text-white">{app.name}</h3>
 							<p class="mt-1 text-sm text-zinc-400">{app.tagline}</p>
+							<p class="mt-3 text-sm leading-relaxed text-zinc-300">{app.context}</p>
 							<p class="mt-2 font-mono text-xs text-cyber-magenta/75">{app.role}</p>
+							{app.images && app.images.length > 0 ? (
+								(() => {
+									const mobileImages = app.images.filter((img) => img.variant === 'mobile');
+									const desktopImages = app.images.filter((img) => img.variant === 'desktop');
+									const hasMixedLayout = mobileImages.length > 0 && desktopImages.length > 0;
+
+									if (hasMixedLayout) {
+										return (
+											<div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-start">
+												<div class="mx-auto w-full max-w-[200px] shrink-0 sm:mx-0">
+													{mobileImages.map((img) => (
+														<figure class="overflow-hidden rounded-sm border border-cyber-cyan/15 bg-cyber-bg/60">
+															<img
+																src={img.src}
+																alt={img.alt}
+																loading="lazy"
+																class="h-auto w-full object-contain"
+															/>
+														</figure>
+													))}
+												</div>
+												<div class="flex min-w-0 flex-1 flex-col gap-3">
+													{desktopImages.map((img) => (
+														<figure class="overflow-hidden rounded-sm border border-cyber-cyan/15 bg-cyber-bg/60">
+															<img
+																src={img.src}
+																alt={img.alt}
+																loading="lazy"
+																class="h-auto w-full object-contain"
+															/>
+														</figure>
+													))}
+												</div>
+											</div>
+										);
+									}
+
+									const isSingleMobile =
+										app.images.length === 1 && app.images[0]?.variant === 'mobile';
+
+									return (
+										<div
+											class:list={[
+												'mt-5 grid gap-3',
+												isSingleMobile
+													? 'max-w-[200px] grid-cols-1'
+													: app.images.length === 1
+														? 'grid-cols-1'
+														: 'sm:grid-cols-2',
+											]}
+										>
+											{app.images.map((img) => (
+												<figure class="overflow-hidden rounded-sm border border-cyber-cyan/15 bg-cyber-bg/60">
+													<img
+														src={img.src}
+														alt={img.alt}
+														loading="lazy"
+														class="h-auto w-full object-contain"
+													/>
+												</figure>
+											))}
+										</div>
+									);
+								})()
+							) : null}
 							<div class="mt-4 flex flex-wrap gap-3">
 								{app.links.map((link) => (
 									<a
@@ -191,14 +258,34 @@ import {
 				id="edu-heading"
 				class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-cyber-cyan/80 sm:text-sm"
 			>
-				<span class="text-cyber-magenta">//</span> Education &amp; languages
+				<span class="text-cyber-magenta">//</span> Education, certifications &amp; languages
 			</h2>
 			<div class="cyber-glow-magenta mt-6 rounded-sm border border-cyber-magenta/20 bg-cyber-surface/40 p-6">
 				<p class="font-display font-medium tracking-wide text-white">{education.degree}</p>
 				<p class="mt-1 text-sm text-zinc-400">{education.school}</p>
 				<p class="mt-1 font-mono text-xs text-cyber-cyan/70">{education.period}</p>
 			</div>
-			<ul class="mt-6 space-y-2 text-sm text-zinc-400">
+			<h3 class="mt-8 font-mono text-xs font-medium uppercase tracking-wider text-cyber-green/90">
+				Certifications
+			</h3>
+			<ul class="mt-4 space-y-3">
+				{
+					certifications.map((cert) => (
+						<li class="rounded-sm border border-zinc-800/80 bg-cyber-elevated/40 px-4 py-3">
+							<p class="text-sm text-zinc-300">{cert.name}</p>
+							<p class="mt-1 font-mono text-xs text-zinc-500">
+								<span class="text-cyber-cyan/80">{cert.provider}</span>
+								<span class="text-zinc-600"> · </span>
+								{cert.period}
+							</p>
+						</li>
+					))
+				}
+			</ul>
+			<h3 class="mt-8 font-mono text-xs font-medium uppercase tracking-wider text-cyber-green/90">
+				Languages
+			</h3>
+			<ul class="mt-4 space-y-2 text-sm text-zinc-400">
 				{
 					languages.map((l) => (
 						<li class="font-mono text-xs sm:text-sm">
