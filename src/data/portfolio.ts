@@ -200,6 +200,32 @@ export type RepoProject = {
 };
 
 /** Curated from `gh repo list josera21` — most relevant / recent first. */
+export type ShowcaseProject = {
+	name: string;
+	tagline: string;
+	description: string;
+	role?: string;
+	images?: StoreAppImage[];
+	links?: { label: string; href: string }[];
+	tags?: string[];
+};
+
+export const workShowcase = {
+	personal: {
+		title: 'Personal projects',
+		description: 'Side projects, experiments, and tools I build on my own time.',
+	},
+	freelance: {
+		title: 'Freelance work',
+		description: 'Client and contract projects delivered as an independent developer.',
+	},
+} as const;
+
+/** Add entries here when ready — empty arrays show a coming soon placeholder on the site. */
+export const personalProjects: ShowcaseProject[] = [];
+
+export const freelanceProjects: ShowcaseProject[] = [];
+
 export const repoProjects: RepoProject[] = [
 	{
 		name: 'GDrink',

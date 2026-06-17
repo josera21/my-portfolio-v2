@@ -5,12 +5,41 @@ import {
 	person,
 	experience,
 	storeApps,
+	personalProjects,
+	freelanceProjects,
+	workShowcase,
 	repoProjects,
 	skillGroups,
 	certifications,
 	education,
 	languages,
 } from '../data/portfolio';
+
+const workCategories = [
+	{
+		id: 'personal',
+		heading: workShowcase.personal.title,
+		description: workShowcase.personal.description,
+		projects: personalProjects,
+		accent: 'green' as const,
+	},
+	{
+		id: 'freelance',
+		heading: workShowcase.freelance.title,
+		description: workShowcase.freelance.description,
+		projects: freelanceProjects,
+		accent: 'magenta' as const,
+	},
+];
+
+const navLinks = [
+	{ href: '#experience', label: 'Experience', hoverClass: 'hover:text-cyber-green' },
+	{ href: '#apps', label: 'Apps', hoverClass: 'hover:text-cyber-cyan' },
+	{ href: '#work', label: 'Work', hoverClass: 'hover:text-cyber-magenta' },
+	{ href: '#projects', label: 'Projects', hoverClass: 'hover:text-cyber-green' },
+	{ href: '#skills', label: 'Skills', hoverClass: 'hover:text-cyber-cyan' },
+	{ href: '#contact', label: 'Contact', hoverClass: 'hover:text-cyber-magenta' },
+] as const;
 ---
 
 <Layout title={`${person.name} — Portfolio`} description={person.summary}>
@@ -20,25 +49,100 @@ import {
 		<div class="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
 			<a
 				href="#top"
-				class="group font-mono text-sm font-medium tracking-wide text-cyber-cyan transition hover:text-cyber-green"
+				class="group shrink-0 font-mono text-sm font-medium tracking-wide text-cyber-cyan transition hover:text-cyber-green"
 			>
 				<span class="text-cyber-magenta/90">{'>'}</span>{' '}
 				{person.name.split(' ')[0]}
 				<span class="text-zinc-500 transition group-hover:text-cyber-green/80">.sys</span>
 			</a>
-			<nav class="flex flex-wrap items-center justify-end gap-2 text-xs font-mono uppercase tracking-wider text-zinc-500 sm:gap-3 sm:text-sm">
-				<a href="#experience" class="hover:text-cyber-green">Experience</a>
-				<span class="hidden text-cyber-magenta/40 sm:inline" aria-hidden="true">/</span>
-				<a href="#apps" class="hover:text-cyber-cyan">Apps</a>
-				<span class="hidden text-cyber-magenta/40 sm:inline" aria-hidden="true">/</span>
-				<a href="#projects" class="hover:text-cyber-green">Projects</a>
-				<span class="hidden text-cyber-magenta/40 sm:inline" aria-hidden="true">/</span>
-				<a href="#skills" class="hover:text-cyber-cyan">Skills</a>
-				<span class="hidden text-cyber-magenta/40 sm:inline" aria-hidden="true">/</span>
-				<a href="#contact" class="hover:text-cyber-magenta">Contact</a>
+			<button
+				type="button"
+				id="nav-toggle"
+				class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-cyber-green/30 bg-cyber-surface/80 p-2 text-cyber-green transition hover:border-cyber-cyan/45 hover:text-cyber-cyan md:hidden"
+				aria-expanded="false"
+				aria-controls="mobile-nav"
+				aria-label="Open navigation menu"
+			>
+				<span class="sr-only">Menu</span>
+				<span class="flex w-4 flex-col gap-1" aria-hidden="true">
+					<span class="h-0.5 w-full bg-current"></span>
+					<span class="h-0.5 w-full bg-current"></span>
+					<span class="h-0.5 w-full bg-current"></span>
+				</span>
+			</button>
+			<nav
+				class="hidden items-center gap-3 text-sm font-mono uppercase tracking-wider text-zinc-500 md:flex"
+				aria-label="Main navigation"
+			>
+				{
+					navLinks.flatMap((link, index) => {
+						const items = [
+							<a href={link.href} class:list={['transition', link.hoverClass]}>
+								{link.label}
+							</a>,
+						];
+						if (index > 0) {
+							items.unshift(
+								<span class="text-cyber-magenta/40" aria-hidden="true">
+									/
+								</span>,
+							);
+						}
+						return items;
+					})
+				}
 			</nav>
 		</div>
+		<nav
+			id="mobile-nav"
+			class="hidden border-t border-cyber-green/15 bg-cyber-bg/95 md:hidden"
+			aria-label="Main navigation"
+		>
+			<ul class="mx-auto flex max-w-3xl flex-col gap-1 px-4 py-3 sm:px-6">
+				{
+					navLinks.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								data-nav-link
+								class:list={[
+									'block rounded-sm px-3 py-3 font-mono text-sm uppercase tracking-wider text-zinc-400 transition',
+									link.hoverClass,
+									'hover:bg-cyber-surface/60',
+								]}
+							>
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
 	</header>
+
+	<script>
+		const toggle = document.getElementById('nav-toggle');
+		const panel = document.getElementById('mobile-nav');
+
+		const setMenuOpen = (open: boolean) => {
+			panel?.classList.toggle('hidden', !open);
+			toggle?.setAttribute('aria-expanded', String(open));
+			toggle?.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+		};
+
+		toggle?.addEventListener('click', () => {
+			const isOpen = panel?.classList.contains('hidden') === false;
+			setMenuOpen(!isOpen);
+		});
+
+		panel?.querySelectorAll('[data-nav-link]').forEach((link) => {
+			link.addEventListener('click', () => setMenuOpen(false));
+		});
+
+		window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+			if (event.matches) setMenuOpen(false);
+		});
+	</script>
 
 	<main id="top" class="mx-auto max-w-3xl px-4 pb-24 pt-16 sm:px-6">
 		<section class="space-y-6" aria-labelledby="hero-heading">
@@ -211,6 +315,127 @@ import {
 					))
 				}
 			</ul>
+		</section>
+
+		<section id="work" class="mt-24 scroll-mt-24" aria-labelledby="work-heading">
+			<h2
+				id="work-heading"
+				class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-cyber-cyan/80 sm:text-sm"
+			>
+				<span class="text-cyber-magenta">//</span> Personal &amp; freelance work
+			</h2>
+			<p class="mt-3 max-w-2xl font-mono text-xs text-zinc-500 sm:text-sm">
+				<span class="text-cyber-green/70">$</span> deploy(showcase) — case studies and project deep-dives
+			</p>
+			<div class="mt-8 grid gap-8 lg:grid-cols-2">
+				{
+					workCategories.map((category) => (
+						<div class="flex flex-col">
+							<h3
+								class:list={[
+									'font-mono text-xs font-medium uppercase tracking-wider',
+									category.accent === 'green' ? 'text-cyber-green/90' : 'text-cyber-magenta/90',
+								]}
+							>
+								{category.heading}
+							</h3>
+							<p class="mt-2 text-sm text-zinc-500">{category.description}</p>
+							{category.projects.length > 0 ? (
+								<ul class="mt-5 flex flex-1 flex-col gap-4">
+									{category.projects.map((project) => (
+										<li
+											class:list={[
+												'rounded-sm border bg-cyber-surface/50 p-5 backdrop-blur-sm',
+												category.accent === 'green'
+													? 'border-cyber-green/20 cyber-glow-green'
+													: 'border-cyber-magenta/20 cyber-glow-magenta',
+											]}
+										>
+											<h4 class="font-display text-lg font-semibold tracking-wide text-white">
+												{project.name}
+											</h4>
+											<p class="mt-1 text-sm text-zinc-400">{project.tagline}</p>
+											<p class="mt-3 text-sm leading-relaxed text-zinc-300">{project.description}</p>
+											{project.role ? (
+												<p class="mt-2 font-mono text-xs text-cyber-magenta/75">{project.role}</p>
+											) : null}
+											{project.images && project.images.length > 0 ? (
+												<div
+													class:list={[
+														'mt-5 grid gap-3',
+														project.images.length === 1 ? 'grid-cols-1' : 'sm:grid-cols-2',
+													]}
+												>
+													{project.images.map((img) => (
+														<figure class="overflow-hidden rounded-sm border border-cyber-cyan/15 bg-cyber-bg/60">
+															<img
+																src={img.src}
+																alt={img.alt}
+																loading="lazy"
+																class="h-auto w-full object-contain"
+															/>
+														</figure>
+													))}
+												</div>
+											) : null}
+											{project.links && project.links.length > 0 ? (
+												<div class="mt-4 flex flex-wrap gap-3">
+													{project.links.map((link) => (
+														<a
+															href={link.href}
+															target="_blank"
+															rel="noopener noreferrer"
+															class="inline-flex rounded-sm border border-cyber-cyan/35 bg-cyber-cyan/10 px-4 py-2 font-mono text-xs font-medium uppercase tracking-wide text-cyber-cyan transition hover:border-cyber-cyan/60 hover:bg-cyber-cyan/20 hover:shadow-[0_0_16px_rgba(0,240,255,0.2)]"
+														>
+															{link.label}
+														</a>
+													))}
+												</div>
+											) : null}
+										</li>
+									))}
+								</ul>
+							) : (
+								<div
+									class:list={[
+										'mt-5 flex flex-1 flex-col items-center justify-center rounded-sm border border-dashed px-6 py-12 text-center backdrop-blur-sm',
+										category.accent === 'green'
+											? 'border-cyber-green/30 bg-cyber-green/5'
+											: 'border-cyber-magenta/30 bg-cyber-magenta/5',
+									]}
+									role="status"
+								>
+									<p
+										class:list={[
+											'font-mono text-[10px] font-medium uppercase tracking-[0.35em] sm:text-xs',
+											category.accent === 'green' ? 'text-cyber-green/80' : 'text-cyber-magenta/80',
+										]}
+									>
+										Coming soon
+									</p>
+									<p class="mt-4 font-display text-base font-semibold tracking-wide text-white sm:text-lg">
+										{category.heading}
+									</p>
+									<p class="mt-2 max-w-xs text-sm leading-relaxed text-zinc-500">
+										Case studies and screenshots are on the way. Check back for updates.
+									</p>
+									<p class="mt-6 font-mono text-xs text-zinc-600">
+										<span
+											class:list={[
+												category.accent === 'green' ? 'text-cyber-green/70' : 'text-cyber-magenta/70',
+											]}
+										>
+											$
+										</span>{' '}
+										status --pending
+										<span class="animate-pulse text-cyber-cyan">_</span>
+									</p>
+								</div>
+							)}
+						</div>
+					))
+				}
+			</div>
 		</section>
 
 		<section id="projects" class="mt-24 scroll-mt-24" aria-labelledby="proj-heading">
