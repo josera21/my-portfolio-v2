@@ -1,0 +1,28 @@
+---
+import { person } from '../data/portfolio';
+import { tridentLegal } from '../data/trident-legal';
+---
+
+<footer
+	class="border-t border-cyber-green/10 px-4 py-8 text-center font-mono text-[10px] uppercase tracking-widest text-zinc-600 sm:px-6 sm:text-xs"
+>
+	<nav class="mb-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 normal-case tracking-wide" aria-label="Documentos legales">
+		<a
+			href={tridentLegal.privacyPath}
+			class="text-cyber-cyan/80 transition hover:text-cyber-cyan hover:underline"
+		>
+			Política de Privacidad — Trident Game
+		</a>
+		<span class="text-cyber-magenta/40" aria-hidden="true">·</span>
+		<a
+			href={tridentLegal.termsPath}
+			class="text-cyber-cyan/80 transition hover:text-cyber-cyan hover:underline"
+		>
+			Términos y Condiciones — Trident Game
+		</a>
+	</nav>
+	<p>
+		<span class="text-cyber-green/40">::</span> Built with Astro &amp; React · {new Date().getFullYear()}{' '}
+		{person.name}
+	</p>
+</footer>

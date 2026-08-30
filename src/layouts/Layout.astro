@@ -4,22 +4,28 @@ import '../styles/global.css';
 type Props = {
 	title?: string;
 	description?: string;
+	lang?: string;
+	canonical?: string;
 };
 
 const {
 	title = 'José Camacaro — Portfolio',
 	description = 'Full stack developer focused on React, Next.js, and React Native.',
+	lang = 'en',
+	canonical,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="robots" content="index,follow" />
+		{canonical ? <link rel="canonical" href={canonical} /> : null}
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

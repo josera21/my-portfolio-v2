@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import ProjectFilter from '../components/react/ProjectFilter';
 import {
 	person,
@@ -548,10 +549,5 @@ const navLinks = [
 		</section>
 	</main>
 
-	<footer
-		class="border-t border-cyber-green/10 py-8 text-center font-mono text-[10px] uppercase tracking-widest text-zinc-600 sm:text-xs"
-	>
-		<span class="text-cyber-green/40">::</span> Built with Astro &amp; React · {new Date().getFullYear()}{' '}
-		{person.name}
-	</footer>
+	<SiteFooter />
 </Layout>

@@ -5,10 +5,11 @@ import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
+// Apex origin: www.jochidev.com currently fails TLS (handshake error),
+// which is why Play Console marked the privacy URL as inactive.
 export default defineConfig({
+  site: 'https://jochidev.com',
   integrations: [react()],
-
   vite: {
     plugins: [tailwindcss()]
   }

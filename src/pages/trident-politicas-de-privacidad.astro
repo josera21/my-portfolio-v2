@@ -1,0 +1,13 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import TridentPrivacyContent from '../components/legal/TridentPrivacyContent.astro';
+import { privacyUrl } from '../data/trident-legal';
+---
+
+<LegalLayout
+	title="Política de Privacidad de Trident Game"
+	description="Política de Privacidad de Trident Game (com.gdrink). No recopilamos, almacenamos, transmitimos ni compartimos datos personales ni de uso."
+	canonical={privacyUrl}
+>
+	<TridentPrivacyContent />
+</LegalLayout>
