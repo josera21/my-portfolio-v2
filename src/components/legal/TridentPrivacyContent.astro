@@ -1,0 +1,230 @@
+---
+import { tridentLegal } from '../../data/trident-legal';
+
+const supportMailto = `mailto:${tridentLegal.supportEmail}`;
+const developerMailto = `mailto:${tridentLegal.developerEmail}`;
+---
+
+<article>
+	<h1 class="font-display text-3xl font-bold uppercase tracking-tight text-white cyber-text-glow sm:text-4xl">
+		Política de Privacidad de Trident Game
+	</h1>
+	<p class="mt-4 text-sm text-zinc-400">
+		Última actualización: <time datetime={tridentLegal.lastUpdatedIso}>{tridentLegal.lastUpdatedEs}</time>
+	</p>
+	<p class="mt-2 text-sm text-zinc-400">
+		Responsable: {tridentLegal.developerLegalName} ({tridentLegal.developerAlias}). País: {tridentLegal.country}.
+		Contacto:
+		<a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a>
+	</p>
+	<p class="mt-2 text-sm text-zinc-500">
+		Esta política aplica a la aplicación móvil <strong class="text-zinc-300">Trident Game</strong> (nombre en la app:
+		Trident), identificada con el package / applicationId <code class="text-cyber-green/90">{tridentLegal.packageId}</code>,
+		distribuida de forma gratuita en Google Play. No hay compras dentro de la app ni anuncios.
+	</p>
+
+	<aside
+		class="cyber-glow-green mt-8 rounded-sm border border-cyber-green/35 bg-cyber-green/10 p-5 text-zinc-100"
+		role="note"
+	>
+		<p class="font-display text-sm font-semibold uppercase tracking-wide text-cyber-green">Declaración central</p>
+		<p class="mt-3 text-base font-medium leading-relaxed">
+			Trident Game NO recopila, NO almacena, NO transmite y NO comparte datos personales ni de uso.
+			No crea cuentas. No inicia sesiones. No guarda cookies ni identificadores. No conserva el historial de
+			partidas. No hay perfil de usuario. Al cerrar la app, no queda nada del jugador en nuestros sistemas
+			porque no existen dichos sistemas ni almacenamiento.
+		</p>
+	</aside>
+
+	<nav class="mt-8 rounded-sm border border-zinc-800/80 bg-cyber-surface/40 p-4" aria-label="Índice">
+		<p class="font-mono text-xs uppercase tracking-wider text-cyber-cyan/80">Contenido</p>
+		<ol class="mt-3 list-decimal space-y-1 pl-5 text-sm text-zinc-400">
+			<li><a class="text-zinc-300" href="#resumen">Resumen</a></li>
+			<li><a class="text-zinc-300" href="#datos-no-recopilados">Datos que no recopilamos</a></li>
+			<li><a class="text-zinc-300" href="#uso-de-la-app">Cómo se usa la app</a></li>
+			<li><a class="text-zinc-300" href="#almacenamiento-local">Almacenamiento local</a></li>
+			<li><a class="text-zinc-300" href="#sesiones-y-cookies">Sesiones y cookies</a></li>
+			<li><a class="text-zinc-300" href="#terceros">Compartición con terceros</a></li>
+			<li><a class="text-zinc-300" href="#permisos">Permisos</a></li>
+			<li><a class="text-zinc-300" href="#menores">Menores</a></li>
+			<li><a class="text-zinc-300" href="#seguridad">Seguridad</a></li>
+			<li><a class="text-zinc-300" href="#derechos">Derechos del usuario</a></li>
+			<li><a class="text-zinc-300" href="#cambios">Cambios a esta política</a></li>
+			<li><a class="text-zinc-300" href="#contacto">Contacto</a></li>
+		</ol>
+	</nav>
+
+	<section id="resumen">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">1. Resumen: no recopilamos datos de usuario</h2>
+		<p class="mt-3 text-zinc-300">
+			Trident Game es un juego de mesa digital / juego para beber en fiestas. Mezcla piezas tipo dominó (28 piezas)
+			con retos de beber. Todo ocurre en el dispositivo, cara a cara, sin red de jugadores.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			La app es 100 % local y funciona sin conexión. No hay cuentas, registro, inicio de sesión ni perfiles. No hay
+			backend propio, API, autenticación ni servidores de juego. No usamos Firebase, analítica, Crashlytics, anuncios,
+			píxeles, SDKs de seguimiento ni redes sociales.
+		</p>
+		<p class="mt-3 font-medium text-white">
+			Esta declaración coincide con la sección Data Safety de Google Play: “No data collected” y “No data shared
+			with third parties”.
+		</p>
+	</section>
+
+	<section id="datos-no-recopilados">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">2. Datos que NO recopilamos</h2>
+		<p class="mt-3 text-zinc-300">
+			No pedimos ni usamos cámara, micrófono, ubicación, contactos, fotos, calendario, SMS, teléfono ni
+			identificadores de publicidad. De forma explícita, Trident Game no recopila:
+		</p>
+		<ul class="text-zinc-300">
+			<li>Nombre, correo electrónico, teléfono, dirección o fecha de nacimiento</li>
+			<li>Cuentas, contraseñas, sesiones o tokens</li>
+			<li>Ubicación, contactos, fotos, micrófono o cámara</li>
+			<li>Identificadores de dispositivo o de publicidad</li>
+			<li>Historial de partidas, puntuaciones o preferencias persistentes</li>
+			<li>Datos de salud, financieros o sensibles</li>
+		</ul>
+		<p class="mt-3 text-zinc-300">
+			La app no identifica al usuario de ninguna forma: ni con ID de dispositivo, ni con correo, ni con nombre.
+		</p>
+	</section>
+
+	<section id="uso-de-la-app">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">3. Cómo se usa la app</h2>
+		<p class="mt-3 text-zinc-300">
+			El juego corre por completo en el dispositivo. Las piezas y las reglas se generan localmente. El estado de
+			la partida (piezas sacadas, turno, diálogos) vive solo en memoria RAM (estado de React). Nada se envía a un
+			servidor nuestro porque no operamos servidores de la app.
+		</p>
+	</section>
+
+	<section id="almacenamiento-local">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">4. Almacenamiento local</h2>
+		<p class="mt-3 text-zinc-300">
+			No persistimos datos del usuario. El progreso de una partida existe solo mientras la app está abierta y se
+			pierde al salir, al matar el proceso o al pulsar “Reiniciar”.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			No usamos AsyncStorage, SharedPreferences de usuario, bases de datos, cookies, sesiones, tokens ni copias
+			de seguridad. La app está configurada con <code class="text-cyber-green/90">android:allowBackup=false</code>.
+		</p>
+	</section>
+
+	<section id="sesiones-y-cookies">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">5. Sesiones y cookies</h2>
+		<p class="mt-3 text-zinc-300">
+			No hay inicio de sesión, no hay cookies y no hay sesiones del usuario. Esta página web de la política tampoco
+			utiliza cookies de seguimiento ni banners de consentimiento, porque no hay cookies de analítica ni publicidad
+			que consentir.
+		</p>
+	</section>
+
+	<section id="terceros">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">6. Compartición con terceros</h2>
+		<p class="mt-3 text-zinc-300">
+			No compartimos datos con terceros porque no los tenemos. No vendemos datos. No hay anuncios ni analítica de
+			terceros. Google Play, como tienda de distribución, puede procesar información de instalación según sus
+			propias políticas; eso ocurre fuera de Trident Game y no es un tratamiento realizado por la app.
+		</p>
+	</section>
+
+	<section id="permisos">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">7. Permisos</h2>
+		<p class="mt-3 text-zinc-300">
+			El único permiso Android declarado es INTERNET, incluido por el runtime de React Native. La app no envía
+			datos de usuario a internet y no usa ese permiso para transmitir información personal.
+		</p>
+	</section>
+
+	<section id="menores">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">8. Menores</h2>
+		<p class="mt-3 text-zinc-300">
+			La app está clasificada {tridentLegal.ageRating}. No está dirigida a menores de 18 años. El juego incluye
+			retos de beber alcohol y está pensado para adultos. No recopilamos datos de menores porque no recopilamos
+			datos de nadie.
+		</p>
+	</section>
+
+	<section id="seguridad">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">9. Seguridad</h2>
+		<p class="mt-3 text-zinc-300">
+			Al no almacenar datos de usuario, no existe una base de datos que proteger. No hacemos copias de seguridad
+			de información del jugador. No hay cuenta que pueda ser comprometida ni historial que recuperar.
+		</p>
+	</section>
+
+	<section id="derechos">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">10. Derechos del usuario</h2>
+		<p class="mt-3 text-zinc-300">
+			Aunque no conservamos datos personales, reconocemos los derechos de acceso, rectificación, supresión,
+			oposición y portabilidad (en el sentido de marcos como GDPR/LOPD). Para ejercerlos, escribe a
+			<a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a>.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			Respuesta honesta: no podemos entregar, rectificar ni borrar un perfil porque no conservamos ninguno. Si
+			nos contactas, responderemos confirmando que no hay datos asociados a ti en nuestros sistemas.
+		</p>
+	</section>
+
+	<section id="cambios">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">11. Cambios a esta política</h2>
+		<p class="mt-3 text-zinc-300">
+			Si cambia el tratamiento de datos, se actualizará esta página y la fecha de última actualización. Mientras
+			la app siga sin recolectar datos, esta declaración se mantiene.
+		</p>
+	</section>
+
+	<section id="contacto">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">12. Contacto</h2>
+		<p class="mt-3 text-zinc-300">
+			Desarrollador: {tridentLegal.developerLegalName} ({tridentLegal.developerAlias}), {tridentLegal.country}.
+		</p>
+		<ul class="text-zinc-300">
+			<li>Soporte: <a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a></li>
+			<li>Desarrollador: <a class="text-cyber-cyan" href={developerMailto}>{tridentLegal.developerEmail}</a></li>
+			<li>Teléfono (Play Store): {tridentLegal.phone}</li>
+		</ul>
+		<p class="mt-3 text-zinc-400">
+			También puedes leer los
+			<a class="text-cyber-cyan" href={tridentLegal.termsPath}>Términos y Condiciones de Trident Game</a>.
+		</p>
+	</section>
+
+	<section id="english" lang="en" class="mt-16 border-t border-cyber-green/15 pt-10">
+		<h2 class="font-display text-2xl font-bold uppercase tracking-tight text-white">
+			Trident Game Privacy Policy (English)
+		</h2>
+		<p class="mt-4 text-sm text-zinc-400">
+			Last updated: <time datetime={tridentLegal.lastUpdatedIso}>{tridentLegal.lastUpdatedEn}</time>
+		</p>
+		<p class="mt-2 text-sm text-zinc-400">
+			Controller: {tridentLegal.developerLegalName} ({tridentLegal.developerAlias}), {tridentLegal.country}.
+			Contact: <a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a>
+		</p>
+		<p class="mt-4 font-medium text-white">
+			Trident Game does NOT collect, store, transmit, or share personal data or usage data. It does not create
+			accounts, start sessions, save cookies or identifiers, keep match history, or create a user profile. When
+			you close the app, nothing about the player remains on our systems because those systems and that storage
+			do not exist.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			This policy covers the mobile app Trident Game (in-app name: Trident), package
+			<code class="text-cyber-green/90">{tridentLegal.packageId}</code>, distributed free on Google Play with no
+			in-app purchases and no ads. It matches Play Data Safety: no data collected and no data shared with third
+			parties.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			The game is a local, offline party / drinking-game experience. Match state lives only in RAM and is deleted
+			when the app is closed, the process is killed, or the player taps Restart. There is no backend, analytics,
+			crash reporting, advertising, social SDK, or user identification. The only Android permission is INTERNET
+			(from the React Native runtime); it is not used to send personal data.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			The app is rated {tridentLegal.ageRating} and is not directed at anyone under 18. To exercise access,
+			correction, deletion, objection, or portability rights, email
+			<a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a>. We cannot produce, change,
+			or delete a profile because we do not keep one.
+		</p>
+	</section>
+</article>

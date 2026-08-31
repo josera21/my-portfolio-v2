@@ -1,0 +1,166 @@
+---
+import { tridentLegal } from '../../data/trident-legal';
+
+const supportMailto = `mailto:${tridentLegal.supportEmail}`;
+const developerMailto = `mailto:${tridentLegal.developerEmail}`;
+---
+
+<article>
+	<h1 class="font-display text-3xl font-bold uppercase tracking-tight text-white cyber-text-glow sm:text-4xl">
+		Términos y Condiciones de Trident Game
+	</h1>
+	<p class="mt-4 text-sm text-zinc-400">
+		Última actualización: <time datetime={tridentLegal.lastUpdatedIso}>{tridentLegal.lastUpdatedEs}</time>
+	</p>
+	<p class="mt-2 text-sm text-zinc-400">
+		Titular: {tridentLegal.developerLegalName} ({tridentLegal.developerAlias}). País: {tridentLegal.country}.
+		Contacto:
+		<a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a>
+	</p>
+	<p class="mt-2 text-sm text-zinc-500">
+		Estos términos aplican a la aplicación móvil <strong class="text-zinc-300">Trident Game</strong> (nombre en la app:
+		Trident), package <code class="text-cyber-green/90">{tridentLegal.packageId}</code>, disponible de forma gratuita
+		en Google Play, sin compras dentro de la app y sin anuncios.
+	</p>
+
+	<section id="aceptacion">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">1. Aceptación</h2>
+		<p class="mt-3 text-zinc-300">
+			Al descargar, instalar o usar Trident Game aceptas estos Términos y Condiciones. Si no estás de acuerdo, no
+			uses la aplicación.
+		</p>
+	</section>
+
+	<section id="descripcion">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">2. Descripción del servicio</h2>
+		<p class="mt-3 text-zinc-300">
+			Trident Game es un juego gratuito de mesa / fiesta para usar en persona. Mezcla piezas tipo dominó (28 piezas)
+			con retos de beber. Todo ocurre en el dispositivo, cara a cara. No es un servicio en línea, no es una red
+			social y no conecta jugadores a través de internet.
+		</p>
+	</section>
+
+	<section id="sin-cuenta">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">3. Sin cuenta</h2>
+		<p class="mt-3 text-zinc-300">
+			No hay registro ni sesión. El uso es anónimo. No se guardan datos, sesiones ni información del usuario. El
+			estado de una partida vive solo en la memoria del dispositivo mientras la app está abierta.
+		</p>
+	</section>
+
+	<section id="edad">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">4. Edad y alcohol</h2>
+		<p class="mt-3 text-zinc-300">
+			La app está clasificada {tridentLegal.ageRating} y está dirigida únicamente a adultos. El juego incluye retos
+			de beber alcohol. El usuario es responsable de cumplir la ley local sobre consumo de alcohol y de beber con
+			moderación.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			El desarrollador no fomenta el consumo excesivo ni se hace responsable de daños, lesiones, infracciones
+			legales u otras consecuencias derivadas del consumo de alcohol u otras conductas durante el uso del juego.
+			Si no puedes o no debes beber alcohol, no participes en los retos que lo impliquen.
+		</p>
+	</section>
+
+	<section id="uso-permitido">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">5. Uso permitido</h2>
+		<p class="mt-3 text-zinc-300">La app se ofrece para uso personal, no comercial. No está permitido:</p>
+		<ul class="text-zinc-300">
+			<li>Ingeniería inversa con fines ilegales</li>
+			<li>Redistribuir la app fuera de Google Play</li>
+			<li>Usar la marca Trident o Trident Game de forma engañosa</li>
+			<li>Usar la app de un modo que viole la ley aplicable</li>
+		</ul>
+	</section>
+
+	<section id="propiedad">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">6. Propiedad intelectual</h2>
+		<p class="mt-3 text-zinc-300">
+			La aplicación, el nombre, el diseño y los recursos (assets) pertenecen a {tridentLegal.developerLegalName}.
+			Estos términos no te transfieren la propiedad de la app ni de sus marcas.
+		</p>
+	</section>
+
+	<section id="garantias">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">7. Sin garantías</h2>
+		<p class="mt-3 text-zinc-300">
+			La app se ofrece “tal cual”. Puede haber errores, interrupciones o incompatibilidades con algunos
+			dispositivos. En la medida permitida por la ley, no se ofrecen garantías expresas ni implícitas de
+			comerciabilidad, idoneidad para un fin particular o ausencia de errores.
+		</p>
+	</section>
+
+	<section id="responsabilidad">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">8. Limitación de responsabilidad</h2>
+		<p class="mt-3 text-zinc-300">
+			El desarrollador no responde por daños indirectos, incidentales, especiales o consecuentes derivados del uso
+			o la imposibilidad de uso de la app, incluido el consumo de alcohol durante el juego, en la máxima medida
+			permitida por la ley aplicable.
+		</p>
+	</section>
+
+	<section id="privacidad">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">9. Privacidad</h2>
+		<p class="mt-3 text-zinc-300">
+			El tratamiento de datos se describe en la
+			<a class="text-cyber-cyan" href={tridentLegal.privacyPath}>Política de Privacidad de Trident Game</a>.
+			Reiteramos: Trident Game no recopila, no almacena, no transmite y no comparte datos personales ni de uso.
+			No hay cuentas, cookies de usuario ni identificadores.
+		</p>
+	</section>
+
+	<section id="ley">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">10. Contacto y ley aplicable</h2>
+		<p class="mt-3 text-zinc-300">
+			Estos términos se rigen por las leyes de {tridentLegal.country}, sin perjuicio de normas imperativas que te
+			protejan en tu país de residencia.
+		</p>
+		<ul class="text-zinc-300">
+			<li>Soporte: <a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a></li>
+			<li>Desarrollador: <a class="text-cyber-cyan" href={developerMailto}>{tridentLegal.developerEmail}</a></li>
+			<li>Teléfono (Play Store): {tridentLegal.phone}</li>
+		</ul>
+	</section>
+
+	<section id="cambios">
+		<h2 class="font-display text-xl font-semibold tracking-wide text-white">11. Cambios</h2>
+		<p class="mt-3 text-zinc-300">
+			Podemos actualizar estos términos publicando la nueva versión en esta URL. La fecha de última actualización
+			indicará el cambio. El uso continuado de la app después de la publicación implica la aceptación de la
+			versión vigente.
+		</p>
+	</section>
+
+	<section id="english" lang="en" class="mt-16 border-t border-cyber-green/15 pt-10">
+		<h2 class="font-display text-2xl font-bold uppercase tracking-tight text-white">
+			Trident Game Terms and Conditions (English)
+		</h2>
+		<p class="mt-4 text-sm text-zinc-400">
+			Last updated: <time datetime={tridentLegal.lastUpdatedIso}>{tridentLegal.lastUpdatedEn}</time>
+		</p>
+		<p class="mt-3 text-zinc-300">
+			By downloading or using Trident Game you accept these terms. The app is a free, offline, in-person party /
+			tabletop drinking game — not an online service or social network. There is no account or login; use is
+			anonymous. Match state exists only in memory while the app is open.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			The app is rated {tridentLegal.ageRating} and is for adults only. It includes drinking challenges. You are
+			responsible for following local alcohol laws and drinking in moderation. The developer does not encourage
+			excessive drinking and is not liable for harm arising from alcohol use or other conduct during play.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			Personal, non-commercial use only. Illegal reverse engineering, redistribution outside Google Play, and
+			misleading use of the Trident name are not allowed. The app, name, design, and assets belong to
+			{tridentLegal.developerLegalName}. The app is provided “as is”, without warranties, and liability for
+			indirect damages is limited to the fullest extent permitted by law, including damages related to alcohol
+			consumption during play.
+		</p>
+		<p class="mt-3 text-zinc-300">
+			Privacy is described in the
+			<a class="text-cyber-cyan" href={tridentLegal.privacyPath}>Trident Game Privacy Policy</a>: no personal data,
+			sessions, or user information are stored. Contact
+			<a class="text-cyber-cyan" href={supportMailto}>{tridentLegal.supportEmail}</a>. Governing law: {tridentLegal.country}.
+			We may update these terms by publishing a new version at this URL.
+		</p>
+	</section>
+</article>

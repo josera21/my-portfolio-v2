@@ -1,0 +1,13 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import TridentTermsContent from '../components/legal/TridentTermsContent.astro';
+import { termsUrl } from '../data/trident-legal';
+---
+
+<LegalLayout
+	title="Términos y Condiciones de Trident Game"
+	description="Términos y Condiciones de Trident Game (com.gdrink). Juego gratuito, local y para adultos. Sin cuentas ni datos de usuario."
+	canonical={termsUrl}
+>
+	<TridentTermsContent />
+</LegalLayout>
